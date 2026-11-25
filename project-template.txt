@@ -1,0 +1,269 @@
+mkdir enterprise-knowledge-rag
+cd enterprise-knowledge-rag
+
+python3.12 -m venv .venv
+source .venv/bin/activate
+
+python -m pip install --upgrade pip
+
+git init
+
+
+
+
+mkdir -p app/{api,models,ingestion,embeddings,vectorstore,retrieval,generation,services}
+
+mkdir -p frontend
+mkdir -p data/sample_documents
+mkdir -p evaluation
+mkdir -p tests
+mkdir -p docs
+mkdir -p .github/workflows
+
+touch app/__init__.py
+
+for dir in app/*/; do
+    touch "${dir}__init__.py"
+done
+
+touch app/main.py
+touch app/config.py
+touch requirements.txt
+touch README.md
+touch .env
+touch .env.example
+touch .gitignore
+
+
+
+python -m pip install -r requirements.txt
+
+
+source .venv/bin/activate
+
+python -m app.scripts.test_ingestion
+
+============================================================
+Document: database_operations.md
+Document ID: DOC-77b39002fc13a165aef3d1f816cc61d84af930af27267bfb48cd40d4ee5079b3
+File size: 457
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-67b81ec9d605dfb8e89b9b68b3b98bf2744df8678ffd056304fa4aad2042cd89
+Index: 0
+Page: None
+Characters: 456
+Preview: # Database Operations
+
+Synthetic documentation for a fictional enterprise.
+
+## Connection pools
+
+Monitor active connections, pending acquisition reque
+
+============================================================
+Document: deployment_guidelines.md
+Document ID: DOC-a0824c02b305221390258097f0784f8a7b8205542a8dad6a06997062c5562a73
+File size: 467
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-c9c55f48bc66645c7a5ce4253ff5bfd95b47c5a42871f2eeaf4b0e04ee9c55af
+Index: 0
+Page: None
+Characters: 466
+Preview: # Deployment Guidelines
+
+Synthetic documentation for a fictional enterprise.
+
+## Release process
+
+Build immutable container images and run unit, integ
+
+============================================================
+Document: disaster_recovery.md
+Document ID: DOC-a8dc448ebad475ffbb79c392ee6deab11361ef8a79a8472e3ec464a8e55dd654
+File size: 456
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-e980a353fad1b1e3d3493fc024ed027365e49ba5c43dd8c5ad2f2e592c02fa99
+Index: 0
+Page: None
+Characters: 455
+Preview: # Disaster Recovery
+
+Synthetic documentation for a fictional enterprise.
+
+## Payment platform objectives
+
+For this fictional enterprise, the payment p
+
+============================================================
+Document: incident_management.md
+Document ID: DOC-8572f3a598e4c349182c92f42a1147524ca81688108b754fc45800d583996a29
+File size: 447
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-1b16728db72d4270dbd86bb1bc056ed637d75d3d52818c3fa0892e9bfff9c27f
+Index: 0
+Page: None
+Characters: 446
+Preview: # Incident Management
+
+Synthetic documentation for a fictional enterprise.
+
+## Severity and escalation
+
+SEV-1 means critical platform outage; page the
+
+============================================================
+Document: kafka_troubleshooting.md
+Document ID: DOC-2a16ed22d0c8776757f50572c5e06b5f6a18e02b3fc5b8c4fc906f7c0ceafed6
+File size: 542
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-7a2fc9471a8ca99e986b673bc6456801b3036b04eb79964b5eed1d5efb09cbe0
+Index: 0
+Page: None
+Characters: 541
+Preview: # Kafka Troubleshooting
+
+Synthetic documentation for a fictional enterprise.
+
+## Consumer lag
+
+Consumer lag is the difference between the latest parti
+
+============================================================
+Document: microservices_architecture.md
+Document ID: DOC-42e9904680131a11fbc1b7f62696611590f53c26dde1b64ddf805be2be576489
+File size: 490
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-53b6696aedb844849f4284fd44a2ed798b96ab5059b74efc6db20ce7bca74561
+Index: 0
+Page: None
+Characters: 489
+Preview: # Microservices Architecture
+
+Synthetic documentation for a fictional enterprise.
+
+## Payment platform
+
+The fictional Payment Service calls Customer S
+
+============================================================
+Document: security_guidelines.md
+Document ID: DOC-6ad17e5f0213c21101f5bfd71b59d0189bc3204dd30fb8afabbfa53cc3ee0e1f
+File size: 432
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-5735a6f99acb791dfa3a3e16a88bc80f32a8ca305fabbf13feb8df32af25d199
+Index: 0
+Page: None
+Characters: 431
+Preview: # Security Guidelines
+
+Synthetic documentation for a fictional enterprise.
+
+## Authentication
+
+Internal APIs validate JWT signatures, issuer, audience
+
+============================================================
+Document: spark_performance.md
+Document ID: DOC-0f82239dcb539b3913ef5e439db98e915acee53af9b94c69a8d21016397a8ada
+File size: 448
+Pages: 1
+Chunks: 1
+
+--- Chunk ---
+Chunk ID: CHUNK-e5abe74a28ce8f3de615010ec1b3c9b3234f491e4b364d8b994f146d4c8e36de
+Index: 0
+Page: None
+Characters: 447
+Preview: # Spark Performance
+
+Synthetic documentation for a fictional enterprise.
+
+## Shuffle and skew
+
+Inspect Spark UI stage metrics for shuffle spill, task 
+
+========== INGESTION SUMMARY ==========
+Total documents: 8
+Total pages: 8
+Total chunks: 8
+
+python -m app.scripts.test_embeddings
+
+Total embeddings: 3
+
+Text: Kafka consumer lag is increasing.
+Dimensions: 1536
+First 5 values: [-0.0272979736328125, -0.0200653076171875, 0.052154541015625, -0.0124664306640625, 0.006649017333984375]
+
+Text: Spark jobs are experiencing data skew.
+Dimensions: 1536
+First 5 values: [0.005023956298828125, 0.01432037353515625, 0.0341796875, -0.0002522468566894531, 0.044891357421875]
+
+Text: Database connection pool is exhausted.
+Dimensions: 1536
+First 5 values: [-0.041015625, 0.0099029541015625, 0.058135986328125, -0.0244598388671875, 0.0233612060546875]
+
+
+python -m app.scripts.ingest_documents
+
+INDEXED: database_operations.md (chunks=1)
+INDEXED: deployment_guidelines.md (chunks=1)
+INDEXED: disaster_recovery.md (chunks=1)
+INDEXED: incident_management.md (chunks=1)
+INDEXED: kafka_troubleshooting.md (chunks=1)
+INDEXED: microservices_architecture.md (chunks=1)
+INDEXED: security_guidelines.md (chunks=1)
+INDEXED: spark_performance.md (chunks=1)
+
+========== INGESTION SUMMARY ==========
+Indexed documents: 8
+Skipped documents: 0
+Failed documents: 0
+New chunks: 8
+Total stored chunks: 8
+Elapsed time: 3.62 seconds
+
+
+python -c "from app.vectorstore.chroma_store import ChromaStore; print(ChromaStore().count())"
+
+ls -lh data/chroma/
+total 624
+drwxr-xr-x  6 badal  staff   192B 25 Nov 17:32 95fa8313-d240-46a3-8374-a8e7c0a951d0
+-rw-r--r--  1 badal  staff   296K 25 Nov 17:34 chroma.sqlite3
+
+
+python -m app.scripts.test_retrieval
+
+
+python -m app.scripts.test_rag
+
+
+
+python -m uvicorn app.main:app \
+  --reload \
+  --port 8000
+
+
+python -m streamlit run frontend/app.py \
+  --server.port 8501

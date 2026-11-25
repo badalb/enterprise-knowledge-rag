@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+
+# Runtime data
+data/chroma/
+data/uploads/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Operating system
+.DS_Store
+
+# Logs
+*.log

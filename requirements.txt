@@ -1,0 +1,13 @@
+openai
+chromadb
+pypdf
+langchain-text-splitters
+fastapi
+uvicorn[standard]
+pydantic>=2,<3
+pydantic-settings
+python-multipart
+streamlit
+httpx
+pytest
+pytest-cov
