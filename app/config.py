@@ -19,17 +19,20 @@ class Settings(BaseSettings):
     chunk_overlap: int = Field(default=100, ge=0)
 
     # Retrieval
-    top_k: int = Field(default=5, ge=1, le=20)
+    top_k: int = Field( default=2, ge=1, le=20 )
 
     min_similarity_score: float = Field(
-        default=0.25,
+        default=0.30,
         ge=-1.0,
         le=1.0
-)
+    )
+
 
     # ChromaDB
     chroma_persist_directory: str = "./data/chroma"
     chroma_collection_name: str = "enterprise_documents"
+
+    openai_judge_model: str = "gpt-4.1"
 
     # API
     api_host: str = "0.0.0.0"

@@ -1,0 +1,425 @@
+[
+  {
+    "id": "CAL-001",
+    "category": "fully_correct",
+    "description": "Complete and correctly cited answer.",
+    "evaluation_case": {
+      "id": "CAL-001",
+      "question": "How should database connection pools be monitored?",
+      "category": "direct",
+      "answerable": true,
+      "expected_documents": ["database_operations.md"],
+      "expected_answer": "Monitor active connections, pending acquisition requests and acquisition latency.",
+      "expected_facts": [
+        "Monitor active connections.",
+        "Monitor pending acquisition requests.",
+        "Monitor acquisition latency."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "database_operations.md",
+        "content": "Monitor active connections, pending acquisition requests and acquisition latency."
+      }
+    ],
+    "candidate_answer": "Monitor active connections, pending acquisition requests and acquisition latency [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 1.0, "maximum": 1.0},
+      "faithfulness": {"minimum": 1.0, "maximum": 1.0},
+      "answer_relevance": {"minimum": 1.0, "maximum": 1.0},
+      "citation_support": {"minimum": 1.0, "maximum": 1.0},
+      "covered_fact_ids": [1, 2, 3],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": false,
+      "has_citation_issues": false
+    }
+  },
+  {
+    "id": "CAL-002",
+    "category": "incomplete_answer",
+    "description": "Grounded answer omitting half of the expected facts.",
+    "evaluation_case": {
+      "id": "CAL-002",
+      "question": "How should Kafka consumer lag be investigated?",
+      "category": "direct",
+      "answerable": true,
+      "expected_documents": ["kafka_troubleshooting.md"],
+      "expected_answer": "Investigate processing latency, partition assignment, downstream dependencies and consumer errors.",
+      "expected_facts": [
+        "Investigate processing latency.",
+        "Investigate partition assignment.",
+        "Investigate downstream dependencies.",
+        "Investigate consumer errors."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "kafka_troubleshooting.md",
+        "content": "When investigating consumer lag, check processing latency, partition assignment, downstream dependencies and consumer errors."
+      }
+    ],
+    "candidate_answer": "Investigate processing latency and partition assignment [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 0.5, "maximum": 0.75},
+      "faithfulness": {"minimum": 1.0, "maximum": 1.0},
+      "answer_relevance": {"minimum": 0.75, "maximum": 1.0},
+      "citation_support": {"minimum": 1.0, "maximum": 1.0},
+      "covered_fact_ids": [1, 2],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": false,
+      "has_citation_issues": false
+    }
+  },
+  {
+    "id": "CAL-003",
+    "category": "additional_supported_information",
+    "description": "Additional grounded information absent from the reference answer.",
+    "evaluation_case": {
+      "id": "CAL-003",
+      "question": "What security checks should internal APIs perform?",
+      "category": "direct",
+      "answerable": true,
+      "expected_documents": ["security_guidelines.md"],
+      "expected_answer": "Validate JWT signatures, issuer, audience and expiration.",
+      "expected_facts": [
+        "Validate JWT signatures.",
+        "Validate issuer.",
+        "Validate audience.",
+        "Validate expiration."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "security_guidelines.md",
+        "content": "Internal APIs must validate JWT signatures, issuer, audience and expiration. Never log access tokens or credentials."
+      }
+    ],
+    "candidate_answer": "Validate JWT signatures, issuer, audience and expiration. Never log access tokens or credentials [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 1.0, "maximum": 1.0},
+      "faithfulness": {"minimum": 1.0, "maximum": 1.0},
+      "answer_relevance": {"minimum": 0.75, "maximum": 1.0},
+      "citation_support": {"minimum": 1.0, "maximum": 1.0},
+      "covered_fact_ids": [1, 2, 3, 4],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": false,
+      "has_citation_issues": false
+    }
+  },
+  {
+    "id": "CAL-004",
+    "category": "unsupported_claim",
+    "description": "Correct answer augmented with an invented operational requirement.",
+    "evaluation_case": {
+      "id": "CAL-004",
+      "question": "How frequently should database backups be performed?",
+      "category": "direct",
+      "answerable": true,
+      "expected_documents": ["database_operations.md"],
+      "expected_answer": "Perform encrypted backups daily.",
+      "expected_facts": [
+        "Perform backups daily.",
+        "Backups must be encrypted."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "database_operations.md",
+        "content": "Perform daily encrypted database backups."
+      }
+    ],
+    "candidate_answer": "Perform daily encrypted backups and retain every backup for seven years [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 0.5, "maximum": 1.0},
+      "faithfulness": {"minimum": 0.25, "maximum": 0.75},
+      "answer_relevance": {"minimum": 0.75, "maximum": 1.0},
+      "citation_support": {"minimum": 0.25, "maximum": 0.75},
+      "covered_fact_ids": [1, 2],
+      "has_unsupported_claims": true,
+      "has_contradictory_claims": false,
+      "has_citation_issues": true
+    }
+  },
+  {
+    "id": "CAL-005",
+    "category": "contradictory_claim",
+    "description": "Answer directly contradicts an explicit operational restriction.",
+    "evaluation_case": {
+      "id": "CAL-005",
+      "question": "Can Kafka consumer offsets be reset without approval?",
+      "category": "direct",
+      "answerable": true,
+      "expected_documents": ["kafka_troubleshooting.md"],
+      "expected_answer": "No. Approval is required before resetting offsets.",
+      "expected_facts": [
+        "Offset resets require approval."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "kafka_troubleshooting.md",
+        "content": "Never reset consumer offsets without approval."
+      }
+    ],
+    "candidate_answer": "Consumer offsets may be reset without approval [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 0.0, "maximum": 0.0},
+      "faithfulness": {"minimum": 0.0, "maximum": 0.0},
+      "answer_relevance": {"minimum": 0.75, "maximum": 1.0},
+      "citation_support": {"minimum": 0.0, "maximum": 0.0},
+      "covered_fact_ids": [],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": true,
+      "has_citation_issues": true
+    }
+  },
+  {
+    "id": "CAL-006",
+    "category": "incorrect_citation",
+    "description": "Correct and grounded answer citing the wrong document.",
+    "evaluation_case": {
+      "id": "CAL-006",
+      "question": "What is the payment platform RTO?",
+      "category": "numerical",
+      "answerable": true,
+      "expected_documents": ["disaster_recovery.md"],
+      "expected_answer": "The payment platform RTO is 60 minutes.",
+      "expected_facts": [
+        "Payment platform RTO is 60 minutes."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "disaster_recovery.md",
+        "content": "The payment platform RTO is 60 minutes."
+      },
+      {
+        "filename": "security_guidelines.md",
+        "content": "Validate JWT signatures and expiration."
+      }
+    ],
+    "candidate_answer": "The payment platform RTO is 60 minutes [2].",
+    "expected_assessment": {
+      "correctness": {"minimum": 1.0, "maximum": 1.0},
+      "faithfulness": {"minimum": 1.0, "maximum": 1.0},
+      "answer_relevance": {"minimum": 1.0, "maximum": 1.0},
+      "citation_support": {"minimum": 0.0, "maximum": 0.0},
+      "covered_fact_ids": [1],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": false,
+      "has_citation_issues": true
+    }
+  },
+  {
+    "id": "CAL-007",
+    "category": "irrelevant_information",
+    "description": "Entirely grounded answer that does not address the question.",
+    "evaluation_case": {
+      "id": "CAL-007",
+      "question": "What is the payment platform RPO?",
+      "category": "numerical",
+      "answerable": true,
+      "expected_documents": ["disaster_recovery.md"],
+      "expected_answer": "The payment platform RPO is 15 minutes.",
+      "expected_facts": [
+        "Payment platform RPO is 15 minutes."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "disaster_recovery.md",
+        "content": "The payment platform RPO is 15 minutes."
+      },
+      {
+        "filename": "deployment_guidelines.md",
+        "content": "Applications must use immutable container images."
+      }
+    ],
+    "candidate_answer": "Applications must use immutable container images [2].",
+    "expected_assessment": {
+      "correctness": {"minimum": 0.0, "maximum": 0.0},
+      "faithfulness": {"minimum": 1.0, "maximum": 1.0},
+      "answer_relevance": {"minimum": 0.0, "maximum": 0.25},
+      "citation_support": {"minimum": 1.0, "maximum": 1.0},
+      "covered_fact_ids": [],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": false,
+      "has_citation_issues": false
+    }
+  },
+  {
+    "id": "CAL-008",
+    "category": "missing_context",
+    "description": "Correct answer according to the reference but unsupported by retrieved context.",
+    "evaluation_case": {
+      "id": "CAL-008",
+      "question": "What is the payment platform RTO?",
+      "category": "numerical",
+      "answerable": true,
+      "expected_documents": ["disaster_recovery.md"],
+      "expected_answer": "The payment platform RTO is 60 minutes.",
+      "expected_facts": [
+        "Payment platform RTO is 60 minutes."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "disaster_recovery.md",
+        "content": "The payment platform RPO is 15 minutes. Obtain approval before initiating failover."
+      }
+    ],
+    "candidate_answer": "The payment platform RTO is 60 minutes [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 1.0, "maximum": 1.0},
+      "faithfulness": {"minimum": 0.0, "maximum": 0.0},
+      "answer_relevance": {"minimum": 1.0, "maximum": 1.0},
+      "citation_support": {"minimum": 0.0, "maximum": 0.0},
+      "covered_fact_ids": [1],
+      "has_unsupported_claims": true,
+      "has_contradictory_claims": false,
+      "has_citation_issues": true
+    }
+  },
+  {
+    "id": "CAL-009",
+    "category": "numerical_error",
+    "description": "Incorrect RPO value but correct RTO value.",
+    "evaluation_case": {
+      "id": "CAL-009",
+      "question": "What are the payment platform RPO and RTO targets?",
+      "category": "numerical",
+      "answerable": true,
+      "expected_documents": ["disaster_recovery.md"],
+      "expected_answer": "RPO is 15 minutes and RTO is 60 minutes.",
+      "expected_facts": [
+        "RPO is 15 minutes.",
+        "RTO is 60 minutes."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "disaster_recovery.md",
+        "content": "The payment platform RPO is 15 minutes and RTO is 60 minutes."
+      }
+    ],
+    "candidate_answer": "The payment platform RPO is 30 minutes and RTO is 60 minutes [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 0.25, "maximum": 0.75},
+      "faithfulness": {"minimum": 0.25, "maximum": 0.75},
+      "answer_relevance": {"minimum": 1.0, "maximum": 1.0},
+      "citation_support": {"minimum": 0.25, "maximum": 0.75},
+      "covered_fact_ids": [2],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": true,
+      "has_citation_issues": true
+    }
+  },
+  {
+    "id": "CAL-010",
+    "category": "unsupported_causal_inference",
+    "description": "Answer converts temporal correlation into confirmed causation.",
+    "evaluation_case": {
+      "id": "CAL-010",
+      "question": "What is known about the cause of the payment incident?",
+      "category": "direct",
+      "answerable": true,
+      "expected_documents": ["incident_report.md"],
+      "expected_answer": "Payment latency increased after a deployment, but the root cause has not been confirmed.",
+      "expected_facts": [
+        "Payment latency increased after a deployment.",
+        "The root cause has not been confirmed."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "incident_report.md",
+        "content": "Payment latency increased after deployment version 2.4.1. The deployment is under investigation. No causal mechanism has been established."
+      }
+    ],
+    "candidate_answer": "Payment latency increased after deployment version 2.4.1. The deployment caused database connection pool exhaustion [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 0.25, "maximum": 0.75},
+      "faithfulness": {"minimum": 0.25, "maximum": 0.75},
+      "answer_relevance": {"minimum": 0.75, "maximum": 1.0},
+      "citation_support": {"minimum": 0.25, "maximum": 0.75},
+      "covered_fact_ids": [1],
+      "has_unsupported_claims": true,
+      "has_contradictory_claims": false,
+      "has_citation_issues": true
+    }
+  },
+  {
+    "id": "CAL-011",
+    "category": "multi_document",
+    "description": "Correct answer combining independently cited documents.",
+    "evaluation_case": {
+      "id": "CAL-011",
+      "question": "What authentication and resilience mechanisms should internal services implement?",
+      "category": "multi_document",
+      "answerable": true,
+      "expected_documents": [
+        "security_guidelines.md",
+        "microservices_architecture.md"
+      ],
+      "expected_answer": "Validate JWT signatures and expiration. Implement bounded timeouts and circuit breakers.",
+      "expected_facts": [
+        "Validate JWT signatures.",
+        "Validate JWT expiration.",
+        "Implement bounded timeouts.",
+        "Implement circuit breakers."
+      ]
+    },
+    "retrieved_context": [
+      {
+        "filename": "security_guidelines.md",
+        "content": "Internal services must validate JWT signatures and expiration."
+      },
+      {
+        "filename": "microservices_architecture.md",
+        "content": "Internal service calls must implement bounded timeouts and circuit breakers."
+      }
+    ],
+    "candidate_answer": "Validate JWT signatures and expiration [1]. Implement bounded timeouts and circuit breakers [2].",
+    "expected_assessment": {
+      "correctness": {"minimum": 1.0, "maximum": 1.0},
+      "faithfulness": {"minimum": 1.0, "maximum": 1.0},
+      "answer_relevance": {"minimum": 1.0, "maximum": 1.0},
+      "citation_support": {"minimum": 1.0, "maximum": 1.0},
+      "covered_fact_ids": [1, 2, 3, 4],
+      "has_unsupported_claims": false,
+      "has_contradictory_claims": false,
+      "has_citation_issues": false
+    }
+  },
+  {
+    "id": "CAL-012",
+    "category": "unanswerable_question",
+    "description": "Fabricated live operational metric.",
+    "evaluation_case": {
+      "id": "CAL-012",
+      "question": "What is the current consumer lag of the production payment consumer group?",
+      "category": "in_domain_unanswerable",
+      "answerable": false,
+      "expected_documents": ["kafka_troubleshooting.md"],
+      "expected_answer": "I could not find sufficient information in the available documents to answer this question.",
+      "expected_facts": []
+    },
+    "retrieved_context": [
+      {
+        "filename": "kafka_troubleshooting.md",
+        "content": "Consumer lag is calculated as the difference between the latest partition offset and the committed consumer group offset."
+      }
+    ],
+    "candidate_answer": "The current production payment consumer lag is 1250 messages [1].",
+    "expected_assessment": {
+      "correctness": {"minimum": 0.0, "maximum": 0.0},
+      "faithfulness": {"minimum": 0.0, "maximum": 0.0},
+      "answer_relevance": {"minimum": 0.75, "maximum": 1.0},
+      "citation_support": {"minimum": 0.0, "maximum": 0.0},
+      "covered_fact_ids": [],
+      "has_unsupported_claims": true,
+      "has_contradictory_claims": false,
+      "has_citation_issues": true
+    }
+  }
+]

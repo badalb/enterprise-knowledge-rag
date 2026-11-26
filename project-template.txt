@@ -267,3 +267,44 @@ python -m uvicorn app.main:app \
 
 python -m streamlit run frontend/app.py \
   --server.port 8501
+
+
+## evaluation directory and golden dataset
+mkdir -p evaluation/datasets
+mkdir -p evaluation/reports
+
+touch evaluation/__init__.py
+touch evaluation/models.py
+touch evaluation/metrics.py
+touch evaluation/retrieval_evaluator.py
+touch evaluation/generation_evaluator.py
+
+
+
+python -m evaluation.test_dataset
+
+
+python -m pytest tests/test_retrieval_metrics.py -v
+
+
+python -m pytest tests/test_retrieval_metrics.py \
+  --cov=evaluation.metrics \
+  --cov-report=term-missing
+
+python -m evaluation.run_retrieval_evaluation
+
+
+python -m evaluation.run_retrieval_experiment
+
+
+python -m evaluation.run_retrieval_evaluation \
+  --top-k 2 \
+  --threshold 0.30
+
+python -m evaluation.prepare_reference_answers
+
+python -m evaluation.validate_generation_dataset
+
+python -m app.scripts.test_execution_trace
+
+python -m pytest tests/test_generation_metrics.py -v
